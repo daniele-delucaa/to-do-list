@@ -7,18 +7,28 @@ root.title("To-Do List App")
 def add_task():
     task = entry_task.get()
     if task != "":
-        # insert the string "task" in the listbox
         listbox_tasks.insert(tkinter.END, task)
         # clear the entry after inserting a task in the listbox
         entry_task.delete(0, tkinter.END)
     else: 
         tkinter.messagebox.showwarning(title="Warning", message="You must enter a task.")
 
+def delete_tasks():
+    tasks_index = listbox_tasks.curselection()
+    if len(tasks_index) == 0:
+        tkinter.messagebox.showwarning(title="Warning", message="You must select a task.")
+
+    for index in tasks_index[::-1]:
+        listbox_tasks.delete(index)
+
+def load_tasks():
+    pass
+
 # GUI
 frame_tasks = tkinter.Frame(root)
 frame_tasks.pack()
 
-listbox_tasks = tkinter.Listbox(frame_tasks, height=10, width=50)
+listbox_tasks = tkinter.Listbox(frame_tasks, height=10, width=50, selectmode="multiple")
 listbox_tasks.pack(side=tkinter.LEFT)
 
 scrollbar_tasks = tkinter.Scrollbar(frame_tasks)
@@ -34,5 +44,12 @@ entry_task.pack()
 
 button_add_task = tkinter.Button(root, text="Add task", width=48, command=add_task)
 button_add_task.pack()
+
+button_delete_tasks = tkinter.Button(root, text="Delete task", width=48, command=delete_tasks)
+button_delete_tasks.pack()
+
+button_load_tasks = tkinter.Button(root, text="Load tasks", width=48, command=load_tasks)
+button_load_tasks.pack()
+
 
 root.mainloop()
