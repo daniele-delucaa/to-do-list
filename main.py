@@ -5,22 +5,34 @@ import pickle
 root = tkinter.Tk()
 root.title("To-Do List App")
 
+t_index, colors_index = 0, 0
+
 def add_task():
+    global t_index, colors_index
+    tasks_colors = ["#fbbc08", "#f9dc71", "#d09404", "#9d8269", "#aac9da"]
     task = entry_task.get()
     if task != "":
         listbox_tasks.insert(tkinter.END, task)
         # clear the entry after inserting a task in the listbox
         entry_task.delete(0, tkinter.END)
+
+        listbox_tasks.itemconfig(t_index,{"bg":tasks_colors[colors_index]})
+        t_index += 1
+        colors_index += 1
+        if colors_index == 5:
+            colors_index = 0
     else: 
         tkinter.messagebox.showwarning(title="Warning", message="You must enter a task.")
 
 def delete_tasks():
+    global t_index
     tasks_index = listbox_tasks.curselection()
     if len(tasks_index) == 0:
         tkinter.messagebox.showwarning(title="Warning", message="You must select a task.")
 
     for index in tasks_index[::-1]:
         listbox_tasks.delete(index)
+        t_index -= 1
 
 def load_tasks():
     try:
