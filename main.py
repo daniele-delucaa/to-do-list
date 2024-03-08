@@ -1,5 +1,6 @@
 import tkinter 
 import tkinter.messagebox
+import pickle
 
 root = tkinter.Tk()
 root.title("To-Do List App")
@@ -22,7 +23,24 @@ def delete_tasks():
         listbox_tasks.delete(index)
 
 def load_tasks():
-    pass
+    try:
+        # load tasks from "tasks.txt" and insert them
+        tasks = pickle.load(open("tasks.txt", "rb"))
+        # this line delete the tasks from listbox, without it, if we load another time
+        # the tasks it will reload the same tasks for many times as many we click load
+        listbox_tasks.delete(0, tkinter.END)
+        for task in tasks:
+            listbox_tasks.insert(tkinter.END, task)
+    except:
+        tkinter.messagebox.showwarning(title="Warning", message="Cannot find tasks.txt")
+
+def save_tasks():
+    tasks = listbox_tasks.get(0, listbox_tasks.size())
+    if len(tasks) == 0:
+        tkinter.messagebox.showwarning(title="Warning", message="There are no tasks in the list.")
+    else :
+        # save tasks in a file named "tasks.txt"
+        pickle.dump(tasks, open("tasks.txt", "wb"))
 
 # GUI
 frame_tasks = tkinter.Frame(root)
@@ -50,6 +68,9 @@ button_delete_tasks.pack()
 
 button_load_tasks = tkinter.Button(root, text="Load tasks", width=48, command=load_tasks)
 button_load_tasks.pack()
+
+button_save_tasks = tkinter.Button(root, text="Save tasks", width=48, command=save_tasks)
+button_save_tasks.pack()
 
 
 root.mainloop()
