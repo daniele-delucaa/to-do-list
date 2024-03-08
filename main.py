@@ -6,10 +6,11 @@ root = tkinter.Tk()
 root.title("To-Do List App")
 
 t_index, colors_index = 0, 0
+tasks_colors = ["#fbbc08", "#f9dc71", "#d09404", "#9d8269", "#aac9da"]
 
 def add_task():
     global t_index, colors_index
-    tasks_colors = ["#fbbc08", "#f9dc71", "#d09404", "#9d8269", "#aac9da"]
+    #tasks_colors = ["#fbbc08", "#f9dc71", "#d09404", "#9d8269", "#aac9da"]
     task = entry_task.get()
     if task != "":
         listbox_tasks.insert(tkinter.END, task)
@@ -36,6 +37,7 @@ def delete_tasks():
 
 def load_tasks():
     try:
+        global t_index, colors_index
         # load tasks from "tasks.txt" and insert them
         tasks = pickle.load(open("tasks.txt", "rb"))
         # this line delete the tasks from listbox, without it, if we load another time
@@ -43,6 +45,12 @@ def load_tasks():
         listbox_tasks.delete(0, tkinter.END)
         for task in tasks:
             listbox_tasks.insert(tkinter.END, task)
+
+            listbox_tasks.itemconfig(t_index,{"bg":tasks_colors[colors_index]})
+            t_index += 1
+            colors_index += 1
+            if colors_index == 5:
+                colors_index = 0
     except:
         tkinter.messagebox.showwarning(title="Warning", message="Cannot find tasks.txt")
 
