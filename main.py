@@ -46,7 +46,7 @@ def save_tasks():
 frame_tasks = tkinter.Frame(root)
 frame_tasks.pack()
 
-listbox_tasks = tkinter.Listbox(frame_tasks, height=10, width=50, selectmode="multiple")
+listbox_tasks = tkinter.Listbox(frame_tasks, height=20, width=70, selectmode="multiple")
 listbox_tasks.pack(side=tkinter.LEFT)
 
 scrollbar_tasks = tkinter.Scrollbar(frame_tasks)
