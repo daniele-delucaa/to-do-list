@@ -72,17 +72,17 @@ scrollbar_tasks.config(command=listbox_tasks.yview)
 entry_task = tkinter.Entry(root, width=30, font="ubuntu")
 entry_task.pack()
 
-button_add_task = tkinter.Button(root, text="Add task", width=20, command=add_task, font="ubuntu")
-button_add_task.pack(padx=5, pady=5)
+button_add_task = tkinter.Button(root, text="Add task", width=20, command=add_task, font="ubuntu", background="#00FF40", border=3)
+button_add_task.pack()
 
-button_delete_tasks = tkinter.Button(root, text="Delete task", width=20, command=delete_tasks, font="ubuntu")
-button_delete_tasks.pack(padx=5, pady=5)
+button_delete_tasks = tkinter.Button(root, text="Delete task", width=20, command=delete_tasks, font="ubuntu", background="#fd5c63", border=3)
+button_delete_tasks.pack()
 
-button_load_tasks = tkinter.Button(root, text="Load tasks", width=20, command=load_tasks, font="ubuntu")
-button_load_tasks.pack(padx=5, pady=5)
+button_load_tasks = tkinter.Button(root, text="Load tasks", width=20, command=load_tasks, font="ubuntu", background="#f9dc71", border=3)
+button_load_tasks.pack()
 
-button_save_tasks = tkinter.Button(root, text="Save tasks", width=20, command=save_tasks, font="ubuntu")
-button_save_tasks.pack(padx=5, pady=5)
+button_save_tasks = tkinter.Button(root, text="Save tasks", width=20, command=save_tasks, font="ubuntu", background="#FEBE10", border=3)
+button_save_tasks.pack()
 
 
 root.mainloop()
