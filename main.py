@@ -58,7 +58,7 @@ def save_tasks():
 frame_tasks = tkinter.Frame(root)
 frame_tasks.pack()
 
-listbox_tasks = tkinter.Listbox(frame_tasks, height=20, width=70, selectmode="multiple", justify="center", font="ubuntu")
+listbox_tasks = tkinter.Listbox(frame_tasks, height=20, width=50, selectmode="multiple", justify="center", font="ubuntu")
 listbox_tasks.pack(side=tkinter.LEFT)
 
 scrollbar_tasks = tkinter.Scrollbar(frame_tasks)
@@ -69,20 +69,20 @@ listbox_tasks.config(yscrollcommand=scrollbar_tasks.set)
 scrollbar_tasks.config(command=listbox_tasks.yview)
 
 # input
-entry_task = tkinter.Entry(root, width=50, font="ubuntu")
+entry_task = tkinter.Entry(root, width=30, font="ubuntu")
 entry_task.pack()
 
-button_add_task = tkinter.Button(root, text="Add task", width=48, command=add_task, font="ubuntu")
-button_add_task.pack()
+button_add_task = tkinter.Button(root, text="Add task", width=20, command=add_task, font="ubuntu")
+button_add_task.pack(padx=5, pady=5)
 
-button_delete_tasks = tkinter.Button(root, text="Delete task", width=48, command=delete_tasks, font="ubuntu")
-button_delete_tasks.pack()
+button_delete_tasks = tkinter.Button(root, text="Delete task", width=20, command=delete_tasks, font="ubuntu")
+button_delete_tasks.pack(padx=5, pady=5)
 
-button_load_tasks = tkinter.Button(root, text="Load tasks", width=48, command=load_tasks, font="ubuntu")
-button_load_tasks.pack()
+button_load_tasks = tkinter.Button(root, text="Load tasks", width=20, command=load_tasks, font="ubuntu")
+button_load_tasks.pack(padx=5, pady=5)
 
-button_save_tasks = tkinter.Button(root, text="Save tasks", width=48, command=save_tasks, font="ubuntu")
-button_save_tasks.pack()
+button_save_tasks = tkinter.Button(root, text="Save tasks", width=20, command=save_tasks, font="ubuntu")
+button_save_tasks.pack(padx=5, pady=5)
 
 
 root.mainloop()
