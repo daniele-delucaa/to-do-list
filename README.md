@@ -9,3 +9,5 @@ To delete one or more tasks you must select the tasks and click the "Delete task
 
 The "Save tasks" button, save the currently listed tasks in a file that will be named "tasks.txt".
 This allows us to use the "Load tasks" button when reopening the application to load the tasks from the txt file into our application's list. 
+
+N.B: The "Load tasks" button works only when the tasks listbox is empty, if you use it when it's not empty it will return a warning message
